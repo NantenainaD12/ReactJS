@@ -1,0 +1,17 @@
+.product-details-container {
+    text-align: center;
+}
+
+.product-details {
+    display: inline-block;
+    background-color: lightgray;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.product-details img {
+    width: 100%;
+    height: auto;
+    margin-bottom: 20px;
+}

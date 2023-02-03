@@ -1,0 +1,41 @@
+
+.container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.header {
+    background-color: #282c34;
+    padding: 20px;
+    text-align: center;
+   color: white;
+}
+
+.main {
+    flex: 1;
+    padding: 20px;
+}
+
+.product-list {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.product {
+    width: calc(33.33% - 20px);
+    margin: 10px;
+    text-align: center;
+}
+
+.product img {
+    width: 100%;
+    height: auto;
+    margin-bottom: 10px;
+}
+
+.footer {
+    background-color: darkcyan;
+    padding: 20px;
+    text-align: center;
+}

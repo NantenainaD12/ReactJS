@@ -1,0 +1,100 @@
+
+import React, { useState } from 'react';
+import axios from 'axios';
+import {useHistory} from "react-router-dom";
+
+const LoginPage = () => {
+    const [username, setUsername] = useState('');
+    const [password, setPassword] = useState('');
+    const [client, setClient] = useState([]);
+    const history = useHistory();
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        console.log("tayy");
+        try {
+            async function fetchData() {
+                const response =  await axios.post('http://192.168.1.188:8080/encher/login',{
+                    'login':username,
+                    'mdp': password
+                });
+                console.log(response.data);
+                setClient(response.data);
+                console.log("ccc"+client);
+                checked();
+            }
+            fetchData();
+
+            // const response = await axios.post('http://192.168.1.188:8080/encher/login',{
+            //     'login':username,
+            //     'mdp': password
+            // });
+            // setClient(response.data);
+            // console.log(response.data);
+            // console.log(client);
+            // checked();
+        } catch (error) {
+            console.error(error);
+        }
+    };
+    const checked = () => {
+        console.log("KII "+client[0].nom);
+        if (client[0].id_client!=null){
+            localStorage.setItem("id_owner",client.id_client);
+            history.push("/");
+        }
+        else{
+            console.log("tsusy ehh");
+            history.push("/Login");
+        }
+    }
+
+    return (
+        <form onSubmit={handleSubmit}>
+            <label>
+                Username:
+                <input type="text" value={username} onChange={e => setUsername(e.target.value)} />
+            </label>
+            <br />
+            <label>
+                Password:
+                <input type="password" value={password} onChange={e => setPassword(e.target.value)} />
+            </label>
+            <br />
+            <button type="submit">Submit</button>
+        </form>
+    );
+};
+
+export default LoginPage;
+
+
+
+
+
+
+
+
+
+
+// function App() {
+//   return (
+//     <div className="App">
+//       <header className="App-header">
+//         <img src={logo} className="App-logo" alt="logo" />
+//         <p>
+//           Edit <code>src/App.js</code> and save to reload.
+//         </p>
+//         <a
+//           className="App-link"
+//           href="https://reactjs.org"
+//           target="_blank"
+//           rel="noopener noreferrer"
+//         >
+//           Learn React
+//         </a>
+//       </header>
+//     </div>
+//   );
+// }
+//
+// export default App;
